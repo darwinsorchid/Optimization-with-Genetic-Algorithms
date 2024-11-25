@@ -26,8 +26,6 @@
 import random
 import streamlit as st
 import matplotlib.pyplot as plt
-import seaborn as sns
-
 
 # ┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉ Define Objective Function ┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉
 
@@ -160,7 +158,7 @@ def genetic_algorithm(population_size: int, generations: int):
     plt.style.use("dark_background")
 
     fig.patch.set_facecolor('#030305')
-
+    
     plt.plot(range(generation + 1), fitness_history)
 
     plt.title("Fitness Progress", color = '#ecd9fa')
@@ -172,6 +170,5 @@ def genetic_algorithm(population_size: int, generations: int):
     plt.yticks(color = '#ecd9fa')
 
     st.pyplot(fig)
-
     
     return best_solution, best_fitness
