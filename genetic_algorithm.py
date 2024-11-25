@@ -24,7 +24,9 @@
 
 # ┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉ Import Libraries ┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉
 import random
+import streamlit as st
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 # ┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉ Define Objective Function ┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉┉
@@ -148,16 +150,28 @@ def genetic_algorithm(population_size: int, generations: int):
             best_fitness = objective_function(best_solution[0], best_solution[1])
         fitness_history.append(best_fitness)
 
-        print(f"Generation{generation + 1}: Best solution: {best_solution} \nBest fitness: {best_fitness}.")
+        # st.write(f"Generation {generation + 1}: Best solution: {best_solution} \nBest fitness: {best_fitness}.")
         
 
 
     # Plot the fitness progress
+    fig = plt.figure(figsize = (10,10))
+
+    plt.style.use("dark_background")
+
+    fig.patch.set_facecolor('#030305')
+
     plt.plot(range(generation + 1), fitness_history)
-    plt.xlabel("Generations")
-    plt.ylabel("Fitness Progress")
-    plt.title("Optimization with Genetic Algorithm")
-    plt.show()
- 
+
+    plt.title("Fitness Progress", color = '#ecd9fa')
+
+    plt.xlabel("Generations", color = '#ecd9fa')
+    plt.ylabel("Fitness", color = '#ecd9fa')
+
+    plt.xticks(color = '#ecd9fa')
+    plt.yticks(color = '#ecd9fa')
+
+    st.pyplot(fig)
+
     
     return best_solution, best_fitness
